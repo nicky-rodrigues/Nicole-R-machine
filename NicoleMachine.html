@@ -1,0 +1,214 @@
+<!-- Criado por Marise Miranda | 2017.1 -->
+<!-- Adaptado por Matheus Matos | 2025.1 -->
+<!-- Adaptado por Nicole Rodrigues do Nascimento | 2026.3 -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPTecher's Machine</title>
+</head>
+    <style>
+        body {
+            background-color: lightblue;
+            font-family: Arial, sans-serif;
+        }
+
+    </style>
+
+<body>
+    <h1>Nicole's Machine</h1>
+
+    <div id="content" style="display: flex; gap: 60px; flex-wrap: wrap;">
+
+        <div>
+            <h3>Digite um número em decimal:</h3>
+            <input type="text" id="id_decimal" placeholder="ex: 27"><br><br>
+            <button onclick="exibirDecimal()" style="background-color: rgb(34, 0, 128); color: white;">Exibir conversões</button>
+
+            <h3>Resultados:</h3>
+            <span>Binário:</span>
+            <div id="decimal_binario"></div><br>
+
+            <span>Octal:</span>
+            <div id="decimal_octal"></div><br>
+
+            <span>Hexadecimal:</span>
+            <div id="decimal_hexadecimal"></div><br>
+        </div>
+
+        <div>
+            <h3>Digite um número em binário:</h3>
+            <input type="text" id="id_binario" placeholder="ex: 110011"><br><br>
+            <button onclick="exibirBinario()" style="background-color: rgb(34, 0, 128); color: white;">Exibir conversões</button>
+
+            <h3>Resultados:</h3>
+            <span>Decimal:</span>
+            <div id="binario_decimal"></div><br>
+
+            <span>Octal:</span>
+            <div id="binario_octal"></div><br>
+
+            <span>Hexadecimal:</span>
+            <div id="binario_hexadecimal"></div><br>
+        </div>
+
+        <div>
+            <h3>Digite um número em octal:</h3>
+            <input type="text" id="id_octal" placeholder="ex: 34"><br><br>
+            <button onclick="exibirOctal()" style="background-color: rgb(34, 0, 128); color: white;">Exibir conversões</button>
+
+            <h3>Resultados:</h3>
+            <span>Decimal:</span>
+            <div id="octal_decimal"></div><br>
+
+            <span>Binário:</span>
+            <div id="octal_binario"></div><br>
+
+            <span>Hexadecimal:</span>
+            <div id="octal_hexadecimal"></div><br>
+        </div>
+
+        <div>
+            <h3>Digite um número em hexadecimal:</h3>
+            <input type="text" id="id_hexadecimal" placeholder="ex: 9AF"><br><br>
+            <button onclick="exibirHexadecimal()" style="background-color: rgb(34, 0, 128); color: white;">Exibir conversões</button>
+
+            <h3>Resultados:</h3>
+            <span>Decimal:</span>
+            <div id="hexa_decimal"></div><br>
+
+            <span>Binário:</span>
+            <div id="hexa_binario"></div><br>
+
+            <span>Octal:</span>
+            <div id="hexa_octal"></div><br>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2>Operações entre números</h2>
+
+    <div>
+        <h3>Primeiro número:</h3>
+        <input type="text" id="id_num1" placeholder="Digite o primeiro número">
+        <select id="id_base1">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div>
+        <h3>Segundo número:</h3>
+        <input type="text" id="id_num2" placeholder="Digite o segundo número">
+        <select id="id_base2">
+            <option value="2">Binário</option>
+            <option value="8">Octal</option>
+            <option value="10">Decimal</option>
+            <option value="16">Hexadecimal</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div>
+        <h3>Operação:</h3>
+        <select id="id_operacao">
+            <option value="+">Soma</option>
+            <option value="-">Subtração</option>
+            <option value="*">Multiplicação</option>
+            <option value="/">Divisão</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button onclick="calcularOperacao()" style="background-color: rgb(34, 0, 128); color: white;">Calcular</button>
+
+    <h3>Resultado:</h3>
+    <span>Decimal:</span>
+    <div id="resultado_decimal"></div><br>
+
+    <span>Binário:</span>
+    <div id="resultado_binario"></div><br>
+
+    <span>Octal:</span>
+    <div id="resultado_octal"></div><br>
+
+    <span>Hexadecimal:</span>
+    <div id="resultado_hexadecimal"></div><br>
+
+</body>
+
+<script>
+function exibirDecimal() {
+        let decimal = Number(id_decimal.value);
+
+        decimal_binario.innerHTML = decimal.toString(2);
+        decimal_octal.innerHTML = decimal.toString(8);
+        decimal_hexadecimal.innerHTML = decimal.toString(16).toUpperCase();
+    }
+
+    function exibirBinario() {
+        let binario = id_binario.value;
+
+        // parseInt --> para ler um número em uma base específica e converter esse valor para decimal 
+        binario_decimal.innerHTML = parseInt(binario, 2).toString(10);
+        binario_octal.innerHTML = parseInt(binario, 2).toString(8);
+        binario_hexadecimal.innerHTML = parseInt(binario, 2).toString(16).toUpperCase();
+    }
+
+    function exibirOctal() {
+        let octal = id_octal.value;
+
+        octal_decimal.innerHTML = parseInt(octal, 8).toString(10);
+        octal_binario.innerHTML = parseInt(octal, 8).toString(2);
+        octal_hexadecimal.innerHTML = parseInt(octal, 8).toString(16).toUpperCase();
+    }
+
+    function exibirHexadecimal() {
+        let hexadecimal = id_hexadecimal.value;
+
+        hexa_decimal.innerHTML = parseInt(hexadecimal, 16).toString(10);
+        hexa_binario.innerHTML = parseInt(hexadecimal, 16).toString(2);
+        hexa_octal.innerHTML = parseInt(hexadecimal, 16).toString(8);
+    }
+
+    function calcularOperacao() {
+        let num1 = id_num1.value;
+        let num2 = id_num2.value;
+        let base1 = Number(id_base1.value);
+        let base2 = Number(id_base2.value);
+        let operacao = id_operacao.value;
+
+        let valor1 = parseInt(num1, base1);
+        let valor2 = parseInt(num2, base2);
+
+        let resultado;
+
+        if (operacao == "+") {
+            resultado = valor1 + valor2;
+        } else if (operacao == "-") {
+            resultado = valor1 - valor2;
+        } else if (operacao == "*") {
+            resultado = valor1 * valor2;
+        } else if (operacao == "/") {
+            resultado = valor1 / valor2;
+        }
+
+        resultado_decimal.innerHTML = resultado;
+        resultado_binario.innerHTML = resultado.toString(2);
+        resultado_octal.innerHTML = resultado.toString(8);
+        resultado_hexadecimal.innerHTML = resultado.toString(16).toUpperCase();
+    }
+
+</script>
+
+</html>
